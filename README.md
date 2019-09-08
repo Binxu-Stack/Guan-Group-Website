@@ -10,6 +10,6 @@ A: E.g. Update index content via modifying `1-Resource/index-content.html`.
 Then, run the script `1-Resource/create_view.py`
 
 
-Upcoming feather:
+Upcoming feature:
 * Surpporing markdown to write new content.
 
