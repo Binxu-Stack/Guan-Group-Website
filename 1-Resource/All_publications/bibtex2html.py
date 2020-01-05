@@ -162,13 +162,16 @@ for l in listlist:
 # Backup all the original data
 full_dictlist = dictlist
 
+#print(full_dictlist)
 
 # Keep only articles in the list
-dictlist = [d for d in dictlist if d['type'] == 'article']
+#dictlist = [d for d in dictlist if d['type'] == 'article']
+#print(dictlist)
 # keep only articles that have author and title
 dictlist = [d for d in dictlist if 'author' in d and 'title' in d]
 dictlist = [d for d in dictlist if d['author'] != '' and d['title'] != '']
 
+#print(dictlist)
 
 # Get a list of the article years and the min and max values
 years = [int(d['year']) for d in dictlist if 'year' in d]
@@ -203,17 +206,22 @@ for y in reversed(list(range(older, newer + 1))):
 
                 for t in optional:
                     if t in d:
-                        if t == 'journal': html += ', {0}'.format(d[t])
+                        #if t == 'journal': html += ', <span style="color: #0E6EB8">{0}</span>'.format(d[t])
+                        if t == 'journal': 
+                            tmp = d[t].replace(" Of ", " of ")
+                            #html += ', <span style="color: #0E6EB8; font-weight: bold;">{0}</span>'.format(d[t])
+                            html += ', <span style="color: #0E6EB8; font-weight: bold;">{0}</span>'.format(tmp)
                         if t == 'eprint': html += ':{0}'.format(d[t])
-                        if t == 'volume': html += ' <b>{0}</b>'.format(d[t])
+                        #if t == 'volume': html += ' <b>{0}</b>'.format(d[t])
+                        if t == 'volume': html += ' {0}'.format(d[t])
                         if t == 'pages': 
                             a = cleanup_page(d[t])
                             html += ', {0}'.format(a)
                         if t == 'year': html += ', {0}'.format(d[t])
                         if t == 'url': 
-                            html += ' <a href="{0}">[html]</a>'.format(d[t])
+                            html += ' <a href="{0}" style="color: #0E6EB8">[html]</a>'.format(d[t])
                         if t == 'doi': 
-                            html += ' <a href="http://dx.doi.org/{0}">[doi]</a>'.format(d[t])
+                            html += ' <a href="http://dx.doi.org/{0}" style="color: #0E6EB8">[doi]</a>'.format(d[t])
 
                 html += '</li>\n'
                 counter += 1
