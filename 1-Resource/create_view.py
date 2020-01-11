@@ -35,6 +35,7 @@ insert_content2base("./index_content.html","index.html")
 insert_content2base("./people_content.html","people.html")
 insert_content2base("./contact_content.html","contact.html")
 insert_content2base("./opening_content.html","opening.html")
+insert_content2base("./teaching_content.html","teaching.html")
 insert_content2base("./research_content.html","research.html")
 import os
 print("Creating publications.html...")
@@ -44,7 +45,7 @@ print("Creating publications.html finished.")
 print("Copying files to ../2-view")
 cmd = """
 [ -d ../2-view ] || mkdir ../2-view
-cp index.html people.html contact.html publications.html ./opening.html ./research.html ../2-view
+cp index.html people.html contact.html publications.html ./opening.html ./research.html ./teaching.html   ../2-view
 cp -r semantic.min.css  w3.css my.css img semantic.min.js ../2-view
 """
 os.system(cmd)
